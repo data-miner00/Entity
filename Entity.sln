@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity.Notes", "Entity.Note
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Entity.Database", "Entity.Database\Entity.Database.sqlproj", "{9AB105FA-5D19-44B8-BC54-640E064885F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.Blazor", "Entity.Blazor\Entity.Blazor.csproj", "{3D5ECE4E-2BA9-42A2-BB4F-DDF2242E1036}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity.Blazor", "Entity.Blazor\Entity.Blazor.csproj", "{3D5ECE4E-2BA9-42A2-BB4F-DDF2242E1036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.NetFramework", "Entity.NetFramework\Entity.NetFramework.csproj", "{647B7478-D7C3-4E25-9871-58AA5E525CDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{3D5ECE4E-2BA9-42A2-BB4F-DDF2242E1036}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D5ECE4E-2BA9-42A2-BB4F-DDF2242E1036}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D5ECE4E-2BA9-42A2-BB4F-DDF2242E1036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{647B7478-D7C3-4E25-9871-58AA5E525CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{647B7478-D7C3-4E25-9871-58AA5E525CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{647B7478-D7C3-4E25-9871-58AA5E525CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{647B7478-D7C3-4E25-9871-58AA5E525CDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
