@@ -1,24 +1,34 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace Entity.Console.Models;
+
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Entity.Console.Models
+/// <summary>
+/// The product entity.
+/// </summary>
+public class Product : ECommerceEntity
 {
-    public class Product
-    {
-        [Key]
-        public int Id { get; set; }
+    /// <summary>
+    /// Gets or sets the name of the product.
+    /// </summary>
+    [Required]
+    public string Name { get; set; } = null!;
 
-        public string Name { get; set; } = null!;
+    /// <summary>
+    /// Gets or sets the description of the product.
+    /// </summary>
+    [Required]
+    public string Description { get; set; } = null!;
 
-        public string Description { get; set; } = null!;
+    /// <summary>
+    /// Gets or sets the price of the product.
+    /// </summary>
+    [Column(TypeName = "decimal(6, 2)")]
+    public decimal Price { get; set; }
 
-        [Column(TypeName = "decimal(6, 2)")]
-        public decimal Price { get; set; }
+    public long SellerId { get; set; }
 
-        public DateTime? ExpiryDate { get; set; }
+    public Shop Seller { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
-    }
 }

@@ -1,7 +1,8 @@
 ﻿using Entity.Console.Data;
 using Entity.Console.Models;
+using static Entity.Console.Seeds.SeedUsers;
 
-QueryRecords();
+Seed();
 
 static void QueryRecords()
 {
@@ -40,7 +41,6 @@ static void UpdateRecord()
     context.SaveChanges();
 }
 
-
 static void InsertRecords()
 {
     using var context = new AppDbContext();
@@ -50,8 +50,6 @@ static void InsertRecords()
         Name = "Veggie Special Pizza",
         Price = 9.99M,
         Description = "Description for veggie pizza",
-        CreatedAt = DateTime.Now,
-        UpdatedAt = DateTime.Now,
     };
 
     context.Products.Add(veggieSpecial);
@@ -61,8 +59,6 @@ static void InsertRecords()
         Name = "Deluxe Meat Pizza",
         Price = 19.99M,
         Description = "Description for deluxe meat",
-        CreatedAt = DateTime.Now,
-        UpdatedAt = DateTime.Now,
     };
 
     context.Add(deluxeMeat);

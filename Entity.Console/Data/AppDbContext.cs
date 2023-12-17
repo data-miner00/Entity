@@ -1,16 +1,12 @@
-﻿using Entity.Console.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Entity.Console.Data
+﻿namespace Entity.Console.Data
 {
+    using Entity.Common;
+    using Entity.Console.Models;
+    using Microsoft.EntityFrameworkCore;
+
     internal class AppDbContext : DbContext
     {
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public DbSet<Order> Orders { get; set; }
 
@@ -18,9 +14,45 @@ namespace Entity.Console.Data
 
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
+        public DbSet<UserProfile> UserProfiles { get; set; }
+
+        public DbSet<Address> Addresses { get; set; }
+
+        public DbSet<Credential> Credentials { get; set; }
+
+        public DbSet<Shop> Shops { get; set; }
+
+        /// <inheritdoc/>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-KL3VEUU;Database=EntityTest;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer(Constants.MSSQLConnectionString);
+        }
+
+        /// <inheritdoc/>
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            SetupDefaultDate<User>();
+            SetupDefaultDate<Order>();
+            SetupDefaultDate<Product>();
+            SetupDefaultDate<OrderDetail>();
+            SetupDefaultDate<UserProfile>();
+            SetupDefaultDate<Address>();
+            SetupDefaultDate<Credential>();
+            SetupDefaultDate<Shop>();
+
+            base.OnModelCreating(modelBuilder);
+
+            void SetupDefaultDate<T>()
+                where T : ECommerceEntity
+            {
+                modelBuilder.Entity<T>()
+                    .Property(x => x.CreatedAt)
+                    .HasDefaultValueSql("GETUTCDATE()");
+
+                modelBuilder.Entity<T>()
+                    .Property(x => x.UpdatedAt)
+                    .HasDefaultValueSql("GETUTCDATE()");
+            }
         }
     }
 }

@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Entity.Console.Models;
 
-namespace Entity.Console.Models
+public class Order : ECommerceEntity
 {
-    public class Order
-    {
-        public int Id { get; set; }
+    public DateTime? OrderFulfilled { get; set; }
 
-        public DateTime OrderPlaced {  get; set; }
+    public long? CustomerId { get; set; }
 
-        public DateTime? OrderFulfilled { get; set; }
+    public User Customer { get; set; } = null!;
 
-        public int CustomerId { get; set; }
+    public ICollection<OrderDetail> OrderDetails { get; set; }
 
-        public Customer Customer { get; set; } = null!;
+    public OrderStatus Status { get; set; }
 
-        public ICollection<OrderDetail> OrderDetails { get; set; }
-    }
+    public long? SellerId { get; set; }
+
+    public Shop Seller { get; set; } = null!;
 }
