@@ -26,9 +26,18 @@ public class Product : ECommerceEntity
     [Column(TypeName = "decimal(6, 2)")]
     public decimal Price { get; set; }
 
+    /// <summary>
+    /// Gets or sets the foreign key to the seller.
+    /// </summary>
     public long SellerId { get; set; }
 
-    public Shop Seller { get; set; }
+    /// <summary>
+    /// Gets or sets the seller of the product.
+    /// </summary>
+    public Shop Seller { get; set; } = null!;
 
-
+    /// <summary>
+    /// Gets or sets the list of ordered item that belongs to this product.
+    /// </summary>
+    public ICollection<OrderDetail> OrderDetails { get; set; } = null!;
 }

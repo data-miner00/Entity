@@ -79,7 +79,7 @@ namespace Entity.Console.Migrations
                         .IsUnique()
                         .HasFilter("[UserProfileId] IS NOT NULL");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Console.Models.Credential", b =>
@@ -120,7 +120,7 @@ namespace Entity.Console.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Credentials");
+                    b.ToTable("Credentials", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Console.Models.Order", b =>
@@ -159,7 +159,7 @@ namespace Entity.Console.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Console.Models.OrderDetail", b =>
@@ -195,7 +195,7 @@ namespace Entity.Console.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetails");
+                    b.ToTable("OrderDetails", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Console.Models.Product", b =>
@@ -234,7 +234,7 @@ namespace Entity.Console.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Console.Models.Shop", b =>
@@ -271,7 +271,7 @@ namespace Entity.Console.Migrations
                     b.HasIndex("OwnerId")
                         .IsUnique();
 
-                    b.ToTable("Shops");
+                    b.ToTable("Shops", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Console.Models.User", b =>
@@ -298,7 +298,7 @@ namespace Entity.Console.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Console.Models.UserProfile", b =>
@@ -343,7 +343,7 @@ namespace Entity.Console.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("UserProfiles");
+                    b.ToTable("UserProfiles", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Console.Models.Address", b =>

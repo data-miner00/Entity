@@ -4,7 +4,10 @@
     using Entity.Console.Models;
     using Microsoft.EntityFrameworkCore;
 
-    internal class AppDbContext : DbContext
+    /// <summary>
+    /// The E-commerce application's database context.
+    /// </summary>
+    public sealed class AppDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
 
