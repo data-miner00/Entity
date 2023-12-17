@@ -20,5 +20,11 @@ namespace Entity.Notes
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var more = new More();
+            more.Show();
+        }
     }
 }
