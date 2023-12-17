@@ -1,5 +1,7 @@
 ﻿namespace Entity.Console.Models;
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 /// <summary>
 /// The details of the item in an order.
 /// </summary>
@@ -9,6 +11,12 @@ public class OrderDetail : ECommerceEntity
     /// Gets or sets the quantities ordered.
     /// </summary>
     public int Quantity { get; set; }
+
+    /// <summary>
+    /// Gets or sets the unit price upon order placement.
+    /// </summary>
+    [Column(TypeName = "decimal(6, 2)")]
+    public decimal OrderUnitPrice { get; set; }
 
     /// <summary>
     /// Gets or sets the foreign key to <see cref="Entity.Console.Models.Order"/>.
