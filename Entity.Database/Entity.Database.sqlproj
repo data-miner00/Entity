@@ -62,6 +62,14 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
+    <Build Include="dbo\Tables\OrderDetails.sql" />
+    <Build Include="dbo\Tables\__EFMigrationsHistory.sql" />
+    <Build Include="dbo\Tables\Users.sql" />
+    <Build Include="dbo\Tables\Credentials.sql" />
+    <Build Include="dbo\Tables\Shops.sql" />
+    <Build Include="dbo\Tables\UserProfiles.sql" />
+    <Build Include="dbo\Tables\Orders.sql" />
     <Build Include="dbo\Tables\Products.sql" />
+    <Build Include="dbo\Tables\Addresses.sql" />
   </ItemGroup>
 </Project>

@@ -1,26 +1,17 @@
 ﻿CREATE TABLE [dbo].[Products] (
-    [Id]          INT             NOT NULL,
-    [CreatedAt]   DATETIME        DEFAULT (getdate()) NOT NULL,
-    [Name]        NVARCHAR (50)   NOT NULL,
-    [Description] NVARCHAR (2000) NULL,
-    [Price]       MONEY           NOT NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC)
+    [Id]          BIGINT         IDENTITY (1, 1) NOT NULL,
+    [Name]        NVARCHAR (MAX) NOT NULL,
+    [Description] NVARCHAR (MAX) NOT NULL,
+    [Price]       DECIMAL (6, 2) NOT NULL,
+    [SellerId]    BIGINT         NOT NULL,
+    [CreatedAt]   DATETIME2 (7)  DEFAULT (getutcdate()) NOT NULL,
+    [UpdatedAt]   DATETIME2 (7)  DEFAULT (getutcdate()) NOT NULL,
+    CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Products_Shops_SellerId] FOREIGN KEY ([SellerId]) REFERENCES [dbo].[Shops] ([Id]) ON DELETE CASCADE
 );
 
 
-
 GO
-    CREATE NONCLUSTERED INDEX IX_Product_CreatedAt
-    ON [dbo].[Products] ([CreatedAt] ASC);
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_Product_PriceMoreThanHundredThousand]
-    ON [dbo].[Products]([Price] ASC) WHERE ([Price]>=(100000));
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_Product_PriceIncludeName]
-    ON [dbo].[Products]([Price] ASC)
-    INCLUDE([Name]);
+CREATE NONCLUSTERED INDEX [IX_Products_SellerId]
+    ON [dbo].[Products]([SellerId] ASC);
 
