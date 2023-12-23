@@ -63,6 +63,8 @@
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Views" />
     <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Post Deployment Scripts" />
+    <Folder Include="dbo\Compares" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\OrderDetails.sql" />
@@ -76,5 +78,11 @@
     <Build Include="dbo\Tables\Addresses.sql" />
     <Build Include="dbo\Views\UserCredentials.sql" />
     <Build Include="dbo\Stored Procedures\sp_UserFilterByUsername.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Compares\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="dbo\Post Deployment Scripts\Script.AddDefaultUser.sql" />
   </ItemGroup>
 </Project>
