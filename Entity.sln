@@ -11,7 +11,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Entity.Database", "Entity.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity.Blazor", "Entity.Blazor\Entity.Blazor.csproj", "{3D5ECE4E-2BA9-42A2-BB4F-DDF2242E1036}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.NetFramework", "Entity.NetFramework\Entity.NetFramework.csproj", "{647B7478-D7C3-4E25-9871-58AA5E525CDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.DatabaseFirst.NetFramework", "Entity.DatabaseFirst.NetFramework\Entity.DatabaseFirst.NetFramework.csproj", "{647B7478-D7C3-4E25-9871-58AA5E525CDB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{E886F3B2-007A-4387-9D18-0BC86D4666AC}"
 	ProjectSection(SolutionItems) = preProject
@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity.Common", "Entity.Common\Entity.Common.csproj", "{E261BCE2-5124-495E-AC8F-28C04F06B077}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.Raw.SqlClient", "Entity.Raw.SqlClient\Entity.Raw.SqlClient.csproj", "{13CDF922-E089-4D30-80B3-153E5339D5B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity.Raw.SqlClient", "Entity.Raw.SqlClient\Entity.Raw.SqlClient.csproj", "{13CDF922-E089-4D30-80B3-153E5339D5B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
