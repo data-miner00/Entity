@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entity.NetFramework
+namespace Entity.DatabaseFirst.NetFramework
 {
     using System;
     using System.Data.Entity;
