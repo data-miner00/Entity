@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity.Common", "Entity.Com
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity.Raw.SqlClient", "Entity.Raw.SqlClient\Entity.Raw.SqlClient.csproj", "{13CDF922-E089-4D30-80B3-153E5339D5B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.Common.UnitTests", "Entity.Common.UnitTests\Entity.Common.UnitTests.csproj", "{F077967E-1C31-411D-AE6E-C163BD976BBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{13CDF922-E089-4D30-80B3-153E5339D5B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13CDF922-E089-4D30-80B3-153E5339D5B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13CDF922-E089-4D30-80B3-153E5339D5B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F077967E-1C31-411D-AE6E-C163BD976BBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F077967E-1C31-411D-AE6E-C163BD976BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F077967E-1C31-411D-AE6E-C163BD976BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F077967E-1C31-411D-AE6E-C163BD976BBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
