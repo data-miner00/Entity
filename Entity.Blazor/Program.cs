@@ -1,6 +1,8 @@
 namespace Entity.Blazor;
 
 using Entity.Blazor.Services;
+using Entity.Console.Data;
+using Entity.Console.Repositories;
 
 /// <summary>
 /// The main program.
@@ -18,6 +20,8 @@ public static class Program
         builder.Services.AddRazorPages();
         builder.Services.AddServerSideBlazor();
         builder.Services.AddSingleton<WeatherForecastService>();
+        builder.Services.AddDbContext<AppDbContext>();
+        builder.Services.AddScoped<UserRepository>();
 
         var app = builder.Build();
 

@@ -1,7 +1,10 @@
 ﻿@page "/fetchdata"
 @using Entity.Blazor.Models
 @using Entity.Blazor.Services
+@using Entity.Console.Models
+@using Entity.Console.Repositories
 @inject WeatherForecastService ForecastService
+@inject UserRepository UserRepository
 
 <PageTitle>Weather forecast</PageTitle>
 
@@ -38,11 +41,28 @@ else
     </table>
 }
 
+@if (users.Count > 0)
+{
+    <h2>Users</h2>
+
+    <ul>
+        @foreach (var user in users) {
+            <li>Username: @user.Username</li>
+        }
+    </ul>
+}
+else
+{
+    <p>You have no users.</p>
+}
+
 @code {
     private WeatherForecast[]? forecasts;
+    private IList<User> users;
 
     protected override async Task OnInitializedAsync()
     {
         forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now));
+        users = UserRepository.GetAll();
     }
 }
