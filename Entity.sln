@@ -5,8 +5,6 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity.Console", "Entity.Console\Entity.Console.csproj", "{580117D8-BF01-4AB5-9043-ADAB0C4CEF53}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity.Notes", "Entity.Notes\Entity.Notes.csproj", "{E1D417B5-B9A0-492A-B55E-B445302BA283}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Entity.Database", "Entity.Database\Entity.Database.sqlproj", "{9AB105FA-5D19-44B8-BC54-640E064885F3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity.Blazor", "Entity.Blazor\Entity.Blazor.csproj", "{3D5ECE4E-2BA9-42A2-BB4F-DDF2242E1036}"
@@ -37,10 +35,6 @@ Global
 		{580117D8-BF01-4AB5-9043-ADAB0C4CEF53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{580117D8-BF01-4AB5-9043-ADAB0C4CEF53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{580117D8-BF01-4AB5-9043-ADAB0C4CEF53}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E1D417B5-B9A0-492A-B55E-B445302BA283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1D417B5-B9A0-492A-B55E-B445302BA283}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E1D417B5-B9A0-492A-B55E-B445302BA283}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E1D417B5-B9A0-492A-B55E-B445302BA283}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9AB105FA-5D19-44B8-BC54-640E064885F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9AB105FA-5D19-44B8-BC54-640E064885F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AB105FA-5D19-44B8-BC54-640E064885F3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
