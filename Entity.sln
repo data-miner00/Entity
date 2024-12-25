@@ -28,6 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity.Raw.SqlClient", "Ent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.Common.UnitTests", "Entity.Common.UnitTests\Entity.Common.UnitTests.csproj", "{F077967E-1C31-411D-AE6E-C163BD976BBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity.Core", "Entity.Core\Entity.Core.csproj", "{F37492B2-D064-45EC-8A5B-82E234E4EA50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{F077967E-1C31-411D-AE6E-C163BD976BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F077967E-1C31-411D-AE6E-C163BD976BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F077967E-1C31-411D-AE6E-C163BD976BBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F37492B2-D064-45EC-8A5B-82E234E4EA50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F37492B2-D064-45EC-8A5B-82E234E4EA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F37492B2-D064-45EC-8A5B-82E234E4EA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F37492B2-D064-45EC-8A5B-82E234E4EA50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
