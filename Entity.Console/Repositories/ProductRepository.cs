@@ -2,14 +2,15 @@
 
 using Entity.Console.Data;
 using Entity.Console.Models;
+using Entity.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
-public sealed class ProductRepository
+public sealed class ProductRepository : IRepository<Product>
 {
     private readonly AppDbContext dbContext;
 
@@ -18,57 +19,57 @@ public sealed class ProductRepository
         this.dbContext = dbContext;
     }
 
-    public Product? GetById(long id)
+    public async Task<IEnumerable<Product>> GetShopProductsAsync(long shopId)
     {
-        var product = this.dbContext.Products
+        var products = await this.dbContext.Products
+            .Where(x => x.SellerId == shopId)
+            .Include(x => x.OrderDetails)
+            .ToListAsync();
+
+        return products;
+    }
+
+    public async Task<IEnumerable<Product>> GetAllAsync(CancellationToken cancellationToken)
+    {
+        var products = await this.dbContext.Products
+            .Include(x => x.OrderDetails)
+            .ToListAsync();
+        return products;
+    }
+
+    public async Task<Product> GetByIdAsync(long id, CancellationToken cancellationToken)
+    {
+        var product = await this.dbContext.Products
             .Where(p => p.Id == id)
             .Include(x => x.OrderDetails)
-            .FirstOrDefault();
+            .FirstOrDefaultAsync();
 
         return product;
     }
 
-    public IEnumerable<Product> GetAll()
+    public async Task CreateAsync(Product entity, CancellationToken cancellationToken)
     {
-        var products = this.dbContext.Products
-            .Include(x => x.OrderDetails)
-            .ToList();
-        return products;
+        await this.dbContext.Products.AddAsync(entity);
+        await this.dbContext.SaveChangesAsync();
     }
 
-    public IEnumerable<Product> GetShopProducts(long shopId)
+    public async Task UpdateAsync(Product entity, CancellationToken cancellationToken)
     {
-        var products = this.dbContext.Products
-            .Where(x => x.SellerId == shopId)
-            .Include(x => x.OrderDetails)
-            .ToList();
-
-        return products;
-    }
-
-    public void Add(Product product)
-    {
-        this.dbContext.Products.Add(product);
-        this.dbContext.SaveChanges();
-    }
-
-    public void Update(Product product)
-    {
-        var targetProduct = this.dbContext.Products
-            .FirstOrDefault(x => x.Id == product.Id) ?? throw new InvalidOperationException();
+        var targetProduct = await this.dbContext.Products
+            .FirstOrDefaultAsync(x => x.Id == entity.Id) ?? throw new InvalidOperationException();
 
         this.dbContext.Products
             .Entry(targetProduct)
             .CurrentValues
-            .SetValues(product);
+            .SetValues(entity);
 
-        this.dbContext.SaveChanges();
+        await this.dbContext.SaveChangesAsync();
     }
 
-    public void Delete(long id)
+    public async Task DeleteByIdAsync(long id, CancellationToken cancellationToken)
     {
-        var targetProduct = this.dbContext.Products.FirstOrDefault(x => x.Id == id);
+        var targetProduct = await this.dbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
         this.dbContext.Products.Remove(targetProduct);
-        this.dbContext.SaveChanges();
+        await this.dbContext.SaveChangesAsync();
     }
 }

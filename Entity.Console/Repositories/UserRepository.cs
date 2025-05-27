@@ -2,12 +2,15 @@
 
 using Entity.Console.Data;
 using Entity.Console.Models;
+using Entity.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Threading.Tasks;
 
 /// <summary>
 /// The user repository.
 /// </summary>
-public sealed class UserRepository
+public sealed class UserRepository : IRepository<User>
 {
     private readonly AppDbContext dbContext;
 
@@ -20,39 +23,45 @@ public sealed class UserRepository
         this.dbContext = dbContext;
     }
 
-    public User? GetById(long id)
+    public async Task<IEnumerable<User>> GetAllAsync(CancellationToken cancellationToken)
     {
-        var user = this.dbContext.Users
-            .Where(x => x.Id == id)
-            .Include(x => x.Credential)
-            .FirstOrDefault();
-
-        return user;
-    }
-
-    public User? GetByUsername(string username)
-    {
-        var user = this.dbContext.Users.SingleOrDefault(x => x.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
-        return user;
-    }
-
-    public IList<User> GetAll()
-    {
-        var users = this.dbContext.Users.ToList();
+        var users = await this.dbContext.Users.ToListAsync();
         return users;
     }
 
-    public void Insert(User user)
+    public async Task<User> GetByIdAsync(long id, CancellationToken cancellationToken)
     {
-        this.dbContext.Users.Add(user);
-        this.dbContext.SaveChanges();
+        var user = await this.dbContext.Users
+            .Where(x => x.Id == id)
+            .Include(x => x.Credential)
+            .FirstOrDefaultAsync();
+
+        return user;
     }
 
-    public void Delete(long id)
+    public async Task CreateAsync(User entity, CancellationToken cancellationToken)
     {
-        var targetUser = this.dbContext.Users.SingleOrDefault(x => x.Id == id) ?? throw new InvalidOperationException();
+        await this.dbContext.Users.AddAsync(entity);
+        await this.dbContext.SaveChangesAsync();
+    }
+
+    public async Task UpdateAsync(User entity, CancellationToken cancellationToken)
+    {
+        var targetUser = await this.dbContext.Users
+            .Where(x => x.Id == entity.Id)
+            .FirstOrDefaultAsync();
+
+        this.dbContext.Users.Entry(targetUser).CurrentValues.SetValues(targetUser);
+
+        await this.dbContext.SaveChangesAsync();
+    }
+
+    public async Task DeleteByIdAsync(long id, CancellationToken cancellationToken)
+    {
+        var targetUser = await this.dbContext.Users.SingleOrDefaultAsync(x => x.Id == id)
+            ?? throw new InvalidOperationException();
 
         this.dbContext.Users.Remove(targetUser);
-        this.dbContext.SaveChanges();
+        await this.dbContext.SaveChangesAsync();
     }
 }

@@ -15,7 +15,7 @@ public sealed class Address : ECommerceEntity
     /// <summary>
     /// Gets or sets the <see cref="UserProfile"/> that owns this instance.
     /// </summary>
-    [ForeignKey("UserProfileId")]
+    [ForeignKey(nameof(UserProfileId))]
     public UserProfile? UserProfile { get; set; }
 
     /// <summary>
@@ -26,7 +26,7 @@ public sealed class Address : ECommerceEntity
     /// <summary>
     /// Gets or sets the <see cref="Shop"/> that owns this instance.
     /// </summary>
-    [ForeignKey("ShopId")]
+    [ForeignKey(nameof(ShopId))]
     public Shop? Shop { get; set; }
 
     /// <summary>

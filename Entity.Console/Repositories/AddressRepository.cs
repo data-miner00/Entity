@@ -1,38 +1,57 @@
 ﻿namespace Entity.Console.Repositories;
 
+using Entity.Common;
 using Entity.Console.Data;
 using Entity.Console.Models;
+using Entity.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
-public sealed class AddressRepository
+public sealed class AddressRepository : IRepository<Address>
 {
     private readonly AppDbContext dbContext;
 
     public AddressRepository(AppDbContext dbContext)
     {
-        this.dbContext = dbContext;
+        this.dbContext = Guard.ThrowIfNull(dbContext);
     }
 
-    public Address? GetById(long id)
+    public async Task<IEnumerable<Address>> GetAllAsync(CancellationToken cancellationToken)
     {
-        var address = this.dbContext.Addresses.FirstOrDefault(a => a.Id == id);
-        return address;
-    }
-
-    public IEnumerable<Address> GetAll()
-    {
-        var addresses = this.dbContext.Addresses.ToList();
+        var addresses = await this.dbContext.Addresses.ToListAsync();
         return addresses;
     }
 
-    public void Update(Address address)
+    public async Task<Address> GetByIdAsync(long id, CancellationToken cancellationToken)
     {
-        var targetAddress = this.dbContext.Addresses.FirstOrDefault(x => x.Id == address.Id);
+        var address = await this.dbContext.Addresses
+            .FirstOrDefaultAsync(a => a.Id == id);
+        return address;
+    }
+
+    public async Task CreateAsync(Address entity, CancellationToken cancellationToken)
+    {
+        await this.dbContext.Addresses.AddAsync(entity, cancellationToken);
+        await this.dbContext.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task UpdateAsync(Address entity, CancellationToken cancellationToken)
+    {
+        var targetAddress = this.dbContext.Addresses.FirstOrDefault(x => x.Id == entity.Id);
         this.dbContext.Addresses
             .Entry(targetAddress)
             .CurrentValues
-            .SetValues(address);
-        this.dbContext.SaveChanges();
+            .SetValues(entity);
+        await this.dbContext.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task DeleteByIdAsync(long id, CancellationToken cancellationToken)
+    {
+        var address = await this.dbContext.Addresses.FirstOrDefaultAsync(x => x.Id == id);
+        this.dbContext.Addresses.Remove(address);
+        await this.dbContext.SaveChangesAsync(cancellationToken);
     }
 }
