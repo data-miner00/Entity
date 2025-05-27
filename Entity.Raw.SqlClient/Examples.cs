@@ -2,7 +2,7 @@
 
 using System;
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 /// <summary>
 /// Examples for using SqlClient.

@@ -1,5 +1,5 @@
-﻿using System.Data.SqlClient;
-using Entity.Common;
+﻿using Entity.Common;
+using Microsoft.Data.SqlClient;
 using static Entity.Raw.SqlClient.Examples;
 
 using var connection = new SqlConnection(Constants.MSSQLConnectionString);
