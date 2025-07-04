@@ -1,15 +1,13 @@
 ﻿namespace Entity.Console.Seeds;
 
-using Entity.Console.Data;
 using Entity.Console.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
-public static class SeedUsers
+public static partial class Seedings
 {
-    public static void Seed()
+    public static void SeedUsers(this ModelBuilder modelBuilder)
     {
-        using var context = new AppDbContext();
-
         var newSeller = new User
         {
             Username = "nakamoto",
@@ -93,9 +91,7 @@ public static class SeedUsers
             },
         };
 
-        context.Add(newSeller);
-        context.Add(newUser);
-
-        context.SaveChanges();
+        modelBuilder.Entity<User>()
+            .HasData(newSeller, newUser);
     }
 }

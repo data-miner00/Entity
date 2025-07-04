@@ -2,6 +2,7 @@
 {
     using Entity.Common;
     using Entity.Console.Models;
+    using Entity.Console.Seeds;
     using Microsoft.EntityFrameworkCore;
 
     /// <summary>
@@ -42,6 +43,8 @@
             SetupDefaultDate<Address>();
             SetupDefaultDate<Credential>();
             SetupDefaultDate<Shop>();
+
+            modelBuilder.SeedUsers();
 
             base.OnModelCreating(modelBuilder);
 
