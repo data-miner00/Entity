@@ -58,11 +58,12 @@ else
 
 @code {
     private WeatherForecast[]? forecasts;
-    private IList<User> users;
+    private List<User> users = [];
 
     protected override async Task OnInitializedAsync()
     {
         forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now));
-        users = UserRepository.GetAll();
+        users = (await UserRepository.GetAllAsync(default)).ToList();
+        Console.WriteLine(users.First().Username);
     }
 }
