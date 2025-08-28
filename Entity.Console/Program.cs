@@ -1,8 +1,14 @@
 ﻿using Entity.Console.Data;
 using Entity.Console.Models;
-using static Entity.Console.Seeds.SeedUsers;
+using Entity.Console.Repositories;
 
-Seed();
+using var context = new AppDbContext();
+
+var repo = new UserRepository(context);
+
+var users = await repo.GetAllAsync(default);
+
+Console.WriteLine(users.First().Username);
 
 static void QueryRecords()
 {

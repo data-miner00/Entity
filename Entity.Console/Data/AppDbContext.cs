@@ -29,6 +29,7 @@
         /// <inheritdoc/>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.EnableSensitiveDataLogging();
             optionsBuilder.UseSqlServer(Constants.MSSQLConnectionString);
         }
 
@@ -44,6 +45,8 @@
             SetupDefaultDate<Credential>();
             SetupDefaultDate<Shop>();
 
+            // After added this, need to add a new migration to apply the seeds
+            // It won't automatically seed on startup
             modelBuilder.SeedUsers();
 
             base.OnModelCreating(modelBuilder);
